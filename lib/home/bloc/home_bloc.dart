@@ -22,13 +22,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     HomeEvent event,
   ) async* {
     if (event is AddToCartEvent) {
-      // guardar en la bd local
+      // TODO:guardar en la bd local
       // _cartBox.add(event.product);
-      var cartElements = [];
-      if (_cartBox.isNotEmpty) cartElements = _cartBox.get("bebidas");
-      cartElements.add(event.product);
-      await _cartBox.put("bebidas", cartElements);
-      yield ElementAddedState();
     }
   }
 }

@@ -33,30 +33,8 @@ class _CartPageState extends State<CartPage> {
           },
           builder: (context, state) {
             if (state is ElementsLoadedState) {
-              return ListView.builder(
-                itemCount: state.prodsList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Dismissible(
-                    key: Key("$index"),
-                    onDismissed: (direction) {
-                      if (direction == DismissDirection.startToEnd) {
-                        BlocProvider.of<CartBloc>(context).add(
-                          RemoveProductEvent(element: index),
-                        );
-                      }
-                    },
-                    background: Container(
-                      color: Colors.red,
-                      child: Icon(Icons.delete),
-                      alignment: Alignment.centerLeft,
-                    ),
-                    child: ListTile(
-                      title: Text("${state.prodsList[index].name}"),
-                      subtitle: Text("${state.prodsList[index].price}"),
-                    ),
-                  );
-                },
-              );
+              //TODO: borrar
+              return Text("TODO");
             } else
               return Center(
                 child: Text("No hay elementos"),

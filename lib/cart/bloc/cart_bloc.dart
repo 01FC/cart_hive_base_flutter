@@ -21,15 +21,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     CartEvent event,
   ) async* {
     if (event is LoadProductsEvent) {
-      if (_cartBox.isNotEmpty)
-        _prodsList = List<Product>.from(_cartBox.get("bebidas"));
-      yield ElementsLoadedState(prodsList: _prodsList);
+      // TODO: cargar
     } else if (event is RemoveProductEvent) {
-      if (event.element < _prodsList.length) {
-        _prodsList.removeAt(event.element);
-        await _cartBox.put("bebidas", _prodsList);
-      }
-      yield ElementsLoadedState(prodsList: _prodsList);
+      // TODO: Borrar
     }
   }
 }
