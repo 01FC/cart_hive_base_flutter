@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:cart_hive/home/item_home.dart';
 import 'package:cart_hive/model/product.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
@@ -22,8 +21,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     HomeEvent event,
   ) async* {
     if (event is AddToCartEvent) {
-      // TODO:guardar en la bd local
+      // guardar en la bd local
       // _cartBox.add(event.product);
+
+      var cartElements = [];
+      cartElements = _cartBox.get("bebidas", defaultValue: []);
+      cartElements.add(event.product);
+      await _cartBox.put("bebidas", cartElements);
+      yield ElementAddedState();
     }
   }
 }
